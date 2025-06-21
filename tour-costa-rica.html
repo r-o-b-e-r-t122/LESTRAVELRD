@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tour a Costa Rica - LESTRAVELRD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://www.paypal.com/sdk/js?client-id=TU_CLIENT_ID_PAYPAL&currency=USD"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .tour-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .tour-container img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    label, input {
+      display: block;
+      width: 100%;
+    }
+    input {
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #ff6f00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: #ff8f00;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+    }
+    .social a {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      color: #555;
+    }
+    .social a:hover {
+      color: #ff6f00;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .tour-container {
+        padding: 10px;
+      }
+      form {
+        width: 100%;
+      }
+    }
+    @media (max-width: 480px) {
+      h1, h2 {
+        font-size: 1.4rem;
+      }
+      .btn {
+        width: 100%;
+        font-size: 1rem;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="tour-container">
+      <h1>Tour a Costa Rica</h1>
+      <a href="index.html" class="btn">← Volver al inicio</a>
+    </div>
+  </header>
+
+  <main class="tour-container">
+    <img src="assets/img/tour-costa-rica.jpg" alt="Costa Rica" />
+    <h2>5 días / 4 noches</h2>
+    <p>Naturaleza exuberante, aventura y relajación en parques nacionales.</p>
+
+    <form id="reserva-form">
+      <div class="form-group">
+        <label for="personas">Cantidad de personas:</label>
+        <input type="number" id="personas" name="personas" min="1" value="1" required />
+      </div>
+
+      <div class="form-group">
+        <label for="dias">Cantidad de días:</label>
+        <input type="number" id="dias" name="dias" min="1" value="5" required />
+      </div>
+
+      <p>Total estimado: <strong id="total">$599.00</strong></p>
+    </form>
+
+    <div id="paypal-button-container" style="margin-top: 20px"></div>
+  </main>
+
+  <footer>
+    <div class="social">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p>&copy; 2025 LESTRAVELRD. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const precioBase = 599;
+    const totalDisplay = document.getElementById("total");
+    const personasInput = document.getElementById("personas");
+    const diasInput = document.getElementById("dias");
+
+    function actualizarTotal() {
+      const personas = parseInt(personasInput.value) || 1;
+      const dias = parseInt(diasInput.value) || 1;
+      const total = (precioBase * personas * dias).toFixed(2);
+      totalDisplay.textContent = `$${total}`;
+      return total;
+    }
+
+    personasInput.addEventListener("input", actualizarTotal);
+    diasInput.addEventListener("input", actualizarTotal);
+
+    paypal.Buttons({
+      createOrder: function (data, actions) {
+        const total = actualizarTotal();
+        return actions.order.create({
+          purchase_units: [
+            {
+              description: "Tour a Costa Rica - LESTRAVELRD",
+              amount: {
+                value: total,
+              },
+            },
+          ],
+        });
+      },
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+          window.location.href = "gracias.html";
+        });
+      },
+      onError: function (err) {
+        alert("Error al procesar el pago.");
+        console.error(err);
+      },
+    }).render("#paypal-button-container");
+  </script>
+</body>
+</html>
