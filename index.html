@@ -1,24 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>LESTRAVELRD - Inicio</title>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LESTRAVELRD - Descubre Centroamérica con Estilo</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
+    <!-- Barra de navegación -->
     <header>
-        <h1>Bienvenido a LESTRAVELRD</h1>
         <nav>
-            <ul>
-                <li><a href="tour-machu-picchu.html">Tour Machu Picchu</a></li>
-                <li><a href="tour-rio.html">Tour Río de Janeiro (Brasil)</a></li>
-                <li><a href="tour-cartagena.html">Tour Cartagena (Colombia)</a></li>
-                <li><a href="tour-panama.html">Tour Panamá</a></li>
-                <li><a href="tour-costa-rica.html">Tour Costa Rica</a></li>
-                <li><a href="tour-peru.html">Tour Perú</a></li>
+            <div class="logo">
+                <h1>LESTRAVELRD</h1>
+                <p class="slogan">Descubre Centroamérica con Estilo</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#destinos">Destinos</a></li>
+                <li><a href="#tours">Tours</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
         </nav>
     </header>
+
+    <!-- Hero Banner (Portada) -->
+    <section class="hero" id="inicio">
+        <video autoplay muted loop>
+            <source src="assets/videos/videotour.mp4" type="video/mp4" />
+            Tu navegador no soporta video.
+        </video>
+        <div class="hero-content">
+            <h2>VIAJA CON NOSOTROS</h2>
+            <p>Explora los mejores destinos de Centroamérica y el Caribe.</p>
+            <a href="#destinos" class="btn">Ver Destinos</a>
+        </div>
+    </section>
+
+    <!-- Sección Destinos -->
+    <section class="destinos" id="destinos">
+        <h2>Nuestros Destinos</h2>
+        <div class="destinos-grid">
+            <!-- Colombia -->
+            <div class="destino-card">
+                <img src="assets/img/cartagena.jpg" alt="Colombia" />
+                <h3>Colombia</h3>
+                <p>Descubre playas, montañas y cultura vibrante.</p>
+                <a href="tour-cartagena.html" class="btn">Ver Tours</a>
+            </div>
+            <!-- Perú -->
+            <div class="destino-card">
+                <img src="assets/img/tour-machu-picchu.jpg" alt="Perú" />
+                <h3>Perú</h3>
+                <p>Machu Picchu, gastronomía y aventura.</p>
+                <a href="tour-machu-picchu.html" class="btn">Ver Tours</a>
+            </div>
+            <!-- Brasil -->
+            <div class="destino-card">
+                <img src="assets/img/rio.jpg" alt="Brasil" />
+                <h3>Brasil</h3>
+                <p>Carnaval, Amazonas y playas paradisíacas.</p>
+                <a href="tour-rio.html" class="btn">Ver Tours</a>
+            </div>
+            <!-- Panamá -->
+            <div class="destino-card">
+                <img src="assets/img/panama-tour.jpg" alt="Panamá" />
+                <h3>Panamá</h3>
+                <p>Ciudad moderna, selvas y playas.</p>
+                <a href="tour-panama.html" class="btn">Ver Tours</a>
+            </div>
+            <!-- Costa Rica -->
+            <div class="destino-card">
+                <img src="assets/img/costa-rica-tour.jpg" alt="Costa Rica" />
+                <h3>Costa Rica</h3>
+                <p>Naturaleza, aventura y relax.</p>
+                <a href="tour-costa-rica.html" class="btn">Ver Tours</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Tours -->
+    <section class="tours" id="tours">
+        <h2>Tours Populares</h2>
+        <div class="tours-grid">
+            <div class="tour-card">
+                <img src="assets/img/tour-machu-picchu.jpg" alt="Tour Machu Picchu" />
+                <h3>Machu Picchu</h3>
+                <p>3 días / 2 noches</p>
+                <p class="price">$499</p>
+                <a href="tour-machu-picchu.html" class="btn">Reservar Ahora</a>
+            </div>
+            <!-- Puedes agregar más tours aquí si quieres -->
+        </div>
+    </section>
+
+    <section id="contacto">
+  <h2>Reserva tu experiencia</h2>
+  <p>Completa el formulario para que nuestro equipo se comunique contigo.</p>
+  
+  <form action="https://formspree.io/f/mjkregra" method="POST" class="contact-form">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="destino">Destino que te interesa:</label>
+    <select name="destino" id="destino">
+      <option value="Colombia">Colombia</option>
+      <option value="Perú">Perú</option>
+      <option value="Brasil">Brasil</option>
+      <option value="Panamá">Panamá</option>
+      <option value="Costa Rica">Costa Rica</option>
+    </select>
+
+    <label for="mensaje">Mensaje o detalles:</label>
+    <textarea name="mensaje" id="mensaje" rows="5" required></textarea>
+
+    <button type="submit" class="btn">Enviar</button>
+  </form>
+</section>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2025 LESTRAVELRD. Todos los derechos reservados.</p>
+
+        <!-- Sección Contacto -->
+<section id="contacto">
+  <h2>Reserva tu experiencia</h2>
+  <p>Completa el formulario para que nuestro equipo se comunique contigo.</p>
+  
+  <form action="https://formspree.io/f/TU_CODIGO_FORM" method="POST" class="contact-form">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="destino">Destino que te interesa:</label>
+    <select name="destino" id="destino" required>
+      <option value="">Selecciona un destino</option>
+      <option value="Colombia">Colombia</option>
+      <option value="Perú">Perú</option>
+      <option value="Brasil">Brasil</option>
+      <option value="Panamá">Panamá</option>
+      <option value="Costa Rica">Costa Rica</option>
+    </select>
+
+    <label for="mensaje">Mensaje o detalles:</label>
+    <textarea name="mensaje" id="mensaje" rows="5" required></textarea>
+
+    <button type="submit" class="btn">Enviar</button>
+  </form>
+</section>
+
+    </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
